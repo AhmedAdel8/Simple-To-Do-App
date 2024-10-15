@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/cubits/complete_task_cubit/archieve_task_cubit.dart';
+import 'package:to_do_app/cubits/complete_task_cubit/archieve_task_state.dart';
+import 'package:to_do_app/models/task_model.dart';
 import 'package:to_do_app/widgets/complete_item_list_view.dart';
+import 'package:to_do_app/widgets/complete_task_item.dart';
 
 class CompleteTasksScreen extends StatefulWidget {
   const CompleteTasksScreen({super.key});
@@ -23,7 +26,7 @@ class _CompleteTasksScreenState extends State<CompleteTasksScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Complete Tasks',
         ),
         actions: [
@@ -36,7 +39,7 @@ class _CompleteTasksScreenState extends State<CompleteTasksScreen> {
           ),
         ],
       ),
-      body: const CompleteTaskListView(),
+      body: CompleteTaskListView(),
     );
   }
 }
