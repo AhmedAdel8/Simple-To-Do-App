@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/cubits/complete_task_cubit/archieve_task_cubit.dart';
-import 'package:to_do_app/cubits/task_cubit/task_cubit.dart';
 import 'package:to_do_app/widgets/complete_item_list_view.dart';
-import 'package:to_do_app/widgets/tasks_list_view.dart';
 
 class CompleteScreenBody extends StatefulWidget {
   const CompleteScreenBody({super.key});

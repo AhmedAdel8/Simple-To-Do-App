@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/cubits/task_cubit/task_cubit.dart';
 import 'package:to_do_app/models/task_model.dart';
 
 class CompleteTaskItem extends StatelessWidget {
