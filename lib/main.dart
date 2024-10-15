@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:to_do_app/cubits/add_task_cubit/add_task_cubit.dart';
+import 'package:to_do_app/cubits/complete_task_cubit/archieve_task_cubit.dart';
 import 'package:to_do_app/cubits/task_cubit/task_cubit.dart';
 import 'package:to_do_app/models/task_model.dart';
 import 'package:to_do_app/screens/task_screen.dart';
@@ -11,6 +13,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   Hive.registerAdapter(TaskModelAdapter());
   await Hive.openBox<TaskModel>('tasks_box');
+  await Hive.openBox<TaskModel>('complete_box');
 
   runApp(const ToDoApp());
 }
@@ -20,8 +23,18 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TaskCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AddTaskCubit>(
+          create: (context) => AddTaskCubit(),
+        ),
+        BlocProvider<TaskCubit>(
+          create: (context) => TaskCubit(),
+        ),
+        BlocProvider<ArchieveTaskCubit>(
+          create: (context) => ArchieveTaskCubit(),
+        ),
+      ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: TaskScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/screens/complete_tasks_screen.dart';
 import 'package:to_do_app/widgets/add_task_bottom_sheet.dart';
 import 'package:to_do_app/widgets/task_screen_body.dart';
 
@@ -14,6 +15,23 @@ class TaskScreen extends StatelessWidget {
         title: const Text(
           'Task Manager',
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const CompleteTasksScreen();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.archive,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
